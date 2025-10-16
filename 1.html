@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中牟到开封路线</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .date-title {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            padding: 10px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: text;
+            outline: none;
+        }
+        
+        .date-title:focus {
+            background: white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+        
+        .route-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .route-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .route-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .route-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .route-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--light-bg);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid white;
+        }
+        
+        .station-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .station-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        
+        .time-label {
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            font-weight: bold;
+            cursor: text;
+            min-width: 40px;
+            display: inline-block;
+            outline: none;
+        }
+        
+        .time-label:focus {
+            box-shadow: 0 0 0 2px white;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .date-title {
+                font-size: 1.3rem;
+            }
+            
+            .route-title {
+                font-size: 1.5rem;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .timeline-item:before {
+                left: -25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>中牟 → 开封</h1>
+            <p class="subtitle">实时公交路线信息</p>
+        </header>
+        
+        <div class="date-title" contenteditable="true">10月16日</div>
+        
+        <div class="route-card">
+            <div class="route-header">
+                <div class="route-icon"> </div>
+                <h2 class="route-title">中牟→开封</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">7:55</span>
+                        <div class="station-name">中牟汽车站</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">8:10</span>
+                        <div class="station-name">八房井北站牌</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">8:20</span>
+                        <div class="station-name">官渡</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">8:20</span>
+                        <div class="station-name">潘庙</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">9:10</span>
+                        <div class="station-name">开封中心站</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>欢迎乘坐 豫A2739Q2</p>
+        </footer>
+    </div>
+</body>
+</html>
