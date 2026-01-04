@@ -1,6 +1,3 @@
-<yb_canvas uuid="a38dc0c3-38ab-4ca0-9924-e9b81b1d2db6" mversion="11" type="code" subtype="single">
-  <title>开封到中牟路线</title>
-  <yb_code lang="html"><![CDATA[  ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -16,7 +13,7 @@
             --light-bg: #f8f9fa;
             --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
+
         body {
             font-family: 'Microsoft YaHei', sans-serif;
             margin: 0;
@@ -26,126 +23,115 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 5px;
         }
-        
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+margin: 0 auto;
+            margin-bottom: 1px;
         }
-        
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-        
-        .date-title {
+
+        .date-input {
             text-align: center;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
-            padding: 10px;
-            background: rgba(255,255,255,0.8);
+            font-size: 50px;
+            color: red;
+            font-weight: bold;
+            margin: 0 auto 5px auto;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #ddd;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            cursor: text;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             outline: none;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
         }
-        
-        .date-title:focus {
-            background: white;
+
+        .date-input:focus {
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 2px var(--primary-color);
         }
-        
+
         .route-card {
             background: white;
             border-radius: 12px;
-            box-shadow: var(--card-shadow);
-            padding: 30px;
+            box-shadow: var(--card-shadow);  
+ 	margin-top: 15px;
+            padding: 10px;
+            padding-top: 5px;
             transition: transform 0.3s ease;
         }
-        
+
         .route-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .route-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
             border-bottom: 1px solid #eee;
         }
-        
-        .route-title {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin: 0;
-            flex-grow: 1;
-        }
-        
+
         .route-icon {
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
             background: var(--primary-color);
             border-radius: 50%;
             display: flex;
-            align-items: center
+            align-items: center;
             justify-content: center;
             color: white;
             font-size: 1.5rem;
             margin-right: 15px;
         }
-        
+
+        .route-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin: 0;
+            flex-grow: 1;
+        }
+
         .timeline {
             position: relative;
             padding-left: 40px;
         }
-        
+
+ /* 修复时间线越界问题 */
         .timeline:before {
             content: '';
             position: absolute;
             left: 15px;
-            top: 0;
-            bottom: 0;
+            top: 20px; /* 从第一个站点开始 */
+            bottom: 30px; /* 到最后一个站点结束 */
             width: 3px;
             background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
         }
-        
+
         .timeline-item {
             position: relative;
-            margin-bottom: 25px;
-            padding: 15px;
+            margin-bottom: 10px;
+            padding: 10px;
             background: var(--light-bg);
             border-radius: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .timeline-item:hover {
             background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        
+
         .timeline-item:before {
-            content: ''
+            content: '';
             position: absolute;
             left: -35px;
             top: 20px;
@@ -155,19 +141,19 @@
             background: var(--primary-color);
             border: 3px solid white;
         }
-        
+
         .station-info {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
         }
-        
+
         .station-name {
             font-weight: bold;
             font-size: 1.1rem;
             color: var(--text-color);
         }
-        
+
         .time-label {
             background: var(--accent-color);
             color: white;
@@ -181,39 +167,37 @@
             display: inline-block;
             outline: none;
         }
-        
+
         .time-label:focus {
             box-shadow: 0 0 0 2px white;
         }
-        
+
         footer {
             text-align: center;
             margin-top: 40px;
             color: #7f8c8d;
             font-size: 0.9rem;
         }
-        
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
             }
-            
-            h1 {
+
+            .date-input {
                 font-size: 1.8rem;
+                width: 100%;
+                max-width: 280px;
             }
-            
-            .date-title {
-                font-size: 1.3rem;
-            }
-            
+
             .route-title {
                 font-size: 1.5rem;
             }
-            
+
             .timeline {
                 padding-left: 30px;
             }
-            
+
             .timeline-item:before {
                 left: -25px;
             }
@@ -223,18 +207,16 @@
 <body>
     <div class="container">
         <header>
-            <h1>开封 → 中牟</h1>
-            <p class="subtitle">实时公交路线信息</p>
+            <!-- 将原来的h1标签替换为input文本框 -->
+            <input type="text" class="date-input" value="10月16日">
         </header>
-        
-        <div class="date-title" contenteditable="true">10月16日</div>
-        
+
         <div class="route-card">
             <div class="route-header">
-                <div class="route-icon"> </div>
+                <div class="route-icon"></div>
                 <h2 class="route-title">开封→中牟</h2>
             </div>
-            
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="station-info">
@@ -242,38 +224,44 @@
                         <div class="station-name">开封中心站</div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="station-info">
-                        <div class="station-name">铁北街</div>
+                        <div class="station-name">小南门</div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="station-info">
-                        <div class="station-name">开高华夏大道</div>
+                        <div class="station-name">大南门</div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="station-info">
                         <span class="time-label" contenteditable="true">10:00</span>
-                        <div class="station-name">开封第五人民医院</div>
+                        <div class="station-name">西郊商场</div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item">
                     <div class="station-info">
-                        <div class="station-name">中牟</div>
+                        <div class="station-name">康泰家园</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <div class="station-name">立洋外国语</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="station-info">
+                        <span class="time-label" contenteditable="true">9:30</span>
+                        <div class="station-name">豪德广场</div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <p>欢迎乘坐 豫A2739Q2</p>
-        </footer>
     </div>
 </body>
-
 </html>
